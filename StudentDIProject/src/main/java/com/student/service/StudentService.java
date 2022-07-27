@@ -9,9 +9,9 @@ import com.student.vo.StudentVO;
 
 public class StudentService {
 	private StudentDAO dao;
-	
-	public StudentService() {
 
+	public StudentService(StudentDAO dao) {
+		this.dao = dao;
 	}
 
 	public ArrayList<StudentVO> selectAllStudent() throws StudentException{

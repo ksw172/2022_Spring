@@ -12,10 +12,9 @@ import com.student.vo.StudentVO;
 public class StudentDAO {
 	private DBManager manager;
 
-	public StudentDAO() {
-		
+	public StudentDAO(DBManager manager) {
+		this.manager = manager;
 	}
-
 
 	public StudentVO selectStudent(String sno) {
 		StudentVO vo = null;

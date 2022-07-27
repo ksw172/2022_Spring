@@ -1,6 +1,4 @@
 package com.student.di;
-import java.rmi.StubNotFoundException;
-
 import org.springframework.context.annotation.Bean;
 
 import com.student.config.DBManager;
@@ -19,11 +17,11 @@ public class DIContainer {
 	}
 	@Bean
 	public StudentService service() {
-		return new StudentService();
+		return new StudentService(dao());
 	}
 	@Bean
 	public StudentDAO dao() {
-		return new StudentDAO();
+		return new StudentDAO(dbmanager());
 	}
 }
 
