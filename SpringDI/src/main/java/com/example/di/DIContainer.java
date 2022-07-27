@@ -10,4 +10,8 @@ public class DIContainer {
 		Greeting g = new Greeting(1, "test");
 		return g;
 	}
+	@Bean
+	public MemberService service() {
+		return new MemberService();
+	}
 }
