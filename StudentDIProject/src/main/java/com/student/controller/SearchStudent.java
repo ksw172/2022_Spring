@@ -2,9 +2,7 @@ package com.student.controller;
 
 import java.util.Scanner;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.student.di.DIContainer;
+import com.student.di.AppContext;
 import com.student.exception.StudentException;
 import com.student.service.StudentService;
 import com.student.vo.StudentVO;
@@ -15,8 +13,8 @@ public class SearchStudent implements Controller {
 	public void execute(Scanner sc) {
 		System.out.print("검색할 학생의 학번 입력 : ");
 		String sno = sc.nextLine();
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DIContainer.class);
-		StudentService service = (StudentService) ctx.getBean("service");
+		StudentService service = (StudentService) AppContext.getInstance()
+				.getCtx().getBean("service");
 		
 		try {
 			StudentVO vo = service.selectStudent(sno);

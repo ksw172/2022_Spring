@@ -6,14 +6,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.student.controller.Controller;
 import com.student.controller.HandlerMapping;
+import com.student.di.AppContext;
 import com.student.di.DIContainer;
-import com.student.service.StudentService;
 
 public class StudentMain {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DIContainer.class);
+		AnnotationConfigApplicationContext ctx = AppContext.getInstance().getCtx();
 		HandlerMapping mapping = (HandlerMapping) ctx.getBean("handler");
 		while(true) {
 			//메뉴 출력

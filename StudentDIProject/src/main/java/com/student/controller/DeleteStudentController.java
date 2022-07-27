@@ -2,17 +2,15 @@ package com.student.controller;
 
 import java.util.Scanner;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.student.di.DIContainer;
+import com.student.di.AppContext;
 import com.student.service.StudentService;
 
 public class DeleteStudentController implements Controller {
 
 	@Override
 	public void execute(Scanner sc) {
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DIContainer.class);
-		StudentService service = (StudentService) ctx.getBean("service");
+		StudentService service = (StudentService) AppContext.getInstance()
+				.getCtx().getBean("service");
 		
 		System.out.println("학생정보 삭제를 시작합니다...........");
 
