@@ -1,6 +1,5 @@
 package com.student.dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,18 +10,12 @@ import com.student.config.DBManager;
 import com.student.vo.StudentVO;
 
 public class StudentDAO {
-	private static StudentDAO instance = new StudentDAO();
 	private DBManager manager;
 
-	private StudentDAO() {
-		manager = DBManager.getInstance();
+	public StudentDAO() {
+		
 	}
 
-	public static StudentDAO getInstance() {
-		if (instance == null)
-			instance = new StudentDAO();
-		return instance;
-	}
 
 	public StudentVO selectStudent(String sno) {
 		StudentVO vo = null;

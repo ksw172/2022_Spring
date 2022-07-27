@@ -7,9 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBManager {
-	private static DBManager instance = new DBManager();
 	private Connection conn;
-	private DBManager() {
+	public DBManager() {
 		try {
 			Class.forName(DBConfig.DB_DRIVER);
 			conn = DriverManager.getConnection(DBConfig.DB_URL,
@@ -31,12 +30,6 @@ public class DBManager {
 	}
 	public Connection getConn() {
 		return conn;
-	}
-
-	public static DBManager getInstance() {
-		if (instance == null)
-			instance = new DBManager();
-		return instance;
 	}
 
 }
