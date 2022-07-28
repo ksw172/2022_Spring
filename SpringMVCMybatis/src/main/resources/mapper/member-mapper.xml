@@ -15,6 +15,11 @@
 	<select id="selectMember" parameterType="String" resultType="member">
 		select * from member where id = #{id}
 	</select>
+	<update id="updateMember" parameterType="member">
+		update member set passwd=#{passwd},name=#{name},age=#{age},
+		gender=#{gender},address=#{address} where id = #{id}
+	</update>
+	
 </mapper>
 
 

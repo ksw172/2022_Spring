@@ -12,7 +12,7 @@
 </script>
 </head>
 <body>
-<form action="update.do">
+<form action="update.do" method="post">
 	<input type="text" name="id" value="${requestScope.dto.id}">
 	<input type="password" name="passwd" value="${requestScope.dto.passwd}">
 	<input type="text" name="name" value="${requestScope.dto.name}">

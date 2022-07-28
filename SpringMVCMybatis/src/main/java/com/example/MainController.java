@@ -40,10 +40,16 @@ public class MainController {
 	}
 	
 	@RequestMapping("/updateView.do")
-	public String delete(String id, Model model) {
+	public String updateView(String id, Model model) {
 		MemberDTO dto = service.selectMember(id);
 		model.addAttribute("dto", dto);
 		return "update_view";
+	}
+	@RequestMapping("/update.do")
+	public String update(MemberDTO dto) {
+		System.out.println(dto);
+		service.updateMember(dto);
+		return "redirect:/";
 	}
 }
 
