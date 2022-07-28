@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -26,6 +27,31 @@ public class MainController {
 	@RequestMapping("/registerView.do")
 	public String registerView() {
 		return "register";
+	}
+//	@RequestMapping("/register.do")
+//	public String register(HttpServletRequest request) {
+//		String id = request.getParameter("id");
+//		String pass = request.getParameter("pass");
+//		String name = request.getParameter("name");
+//		int age = Integer.parseInt(request.getParameter("age"));
+//		
+//		System.out.println(id);
+//		System.out.println(pass);
+//		System.out.println(name);
+//		System.out.println(age);
+//		return null;
+//	}
+//	@RequestMapping("/register.do")
+//	public String register( String id, String pass, String name, int age) {
+//		RegisterDTO dto = new RegisterDTO(id, name, pass, age);
+//		System.out.println(dto);
+//		return null;
+//	}
+	@RequestMapping("/register.do")
+	public String register( RegisterDTO dto , HttpServletRequest request) {
+		System.out.println(dto);
+		request.setAttribute("dto", dto);
+		return "register_result";
 	}
 }
 
