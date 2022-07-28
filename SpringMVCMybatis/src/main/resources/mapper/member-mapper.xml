@@ -6,4 +6,7 @@
 	<select id="selectAllMember" resultType="member">
 		select * from member
 	</select>
+	<insert id="insertMember" parameterType="member">
+		insert into member values(#{id},#{passwd},#{name},#{age},#{gender},#{address})
+	</insert>
 </mapper>

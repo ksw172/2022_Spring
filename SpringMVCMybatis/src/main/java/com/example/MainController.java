@@ -28,6 +28,7 @@ public class MainController {
 	@RequestMapping("/register.do")
 	public String register(MemberDTO dto) {
 		System.out.println(dto);
+		service.insertMember(dto);
 		return "redirect:/";
 	}
 }
