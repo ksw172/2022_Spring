@@ -9,4 +9,7 @@
 	<insert id="insertMember" parameterType="member">
 		insert into member values(#{id},#{passwd},#{name},#{age},#{gender},#{address})
 	</insert>
+	<delete id="deleteMember" parameterType="String">
+		delete from member where id = #{id}
+	</delete>
 </mapper>

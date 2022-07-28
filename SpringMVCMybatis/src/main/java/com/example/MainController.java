@@ -31,6 +31,13 @@ public class MainController {
 		service.insertMember(dto);
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/delete.do")
+	public String delete(String id) {
+		System.out.println(id);
+		service.delete(id);
+		return "redirect:/";
+	}
 }
 
 
