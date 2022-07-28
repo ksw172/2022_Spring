@@ -24,6 +24,12 @@ public class MainController {
 		model.addAttribute("list", list);
 		return "main";
 	}
+	
+	@RequestMapping("/register.do")
+	public String register(MemberDTO dto) {
+		System.out.println(dto);
+		return "redirect:/";
+	}
 }
 
 

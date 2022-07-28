@@ -14,6 +14,17 @@
 <body>
 <h1>회원관리</h1>
 <hr>
+<form action="register.do">
+	<!-- 회원정보 등록 폼 -->
+	<input type="text" name="id">
+	<input type="password" name="passwd">
+	<input type="text" name="name">
+	<input type="text" name="age">
+	<input type="radio" name="gender" value="M"> 남
+	<input type="radio" name="gender" value="F"> 여
+	<input type="text" name="address">
+	<button>추가</button>
+</form>
 <table>
 <tr>
 	<th>아이디</th>
