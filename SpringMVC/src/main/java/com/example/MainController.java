@@ -53,6 +53,11 @@ public class MainController {
 		model.addAttribute("dto", dto);
 		return "register_result";
 	}
+	
+	@RequestMapping("/loginView.do")
+	public String loginView() {
+		return "login";
+	}
 }
 
 
