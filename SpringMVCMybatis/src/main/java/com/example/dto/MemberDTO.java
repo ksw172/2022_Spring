@@ -1,5 +1,8 @@
 package com.example.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("member")
 public class MemberDTO {
 	private String id;
 	private String passwd;
