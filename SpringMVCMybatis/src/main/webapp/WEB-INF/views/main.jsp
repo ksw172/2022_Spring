@@ -43,7 +43,8 @@
 		<td>${member.age }</td>
 		<td>${member.gender }</td>
 		<td>${member.address }</td>
-		<td><a href="delete.do?id=${member.id }">삭제</a> / 수정</td>
+		<td><a href="delete.do?id=${member.id }">삭제</a> / 
+		<a href="updateView.do?id=${member.id }">수정</a></td>
 	</tr>
 </c:forEach>
 </table>

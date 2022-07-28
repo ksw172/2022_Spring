@@ -38,6 +38,13 @@ public class MainController {
 		service.delete(id);
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/updateView.do")
+	public String delete(String id, Model model) {
+		MemberDTO dto = service.selectMember(id);
+		model.addAttribute("dto", dto);
+		return "update_view";
+	}
 }
 
 

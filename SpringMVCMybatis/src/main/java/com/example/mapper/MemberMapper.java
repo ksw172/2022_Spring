@@ -12,5 +12,6 @@ public interface MemberMapper {
 	List<MemberDTO> selectAllMember();
 	int insertMember(MemberDTO dto);
 	int deleteMember(String id);
+	MemberDTO selectMember(String id);
 
 }
