@@ -3,8 +3,8 @@ package com.example;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -48,9 +48,9 @@ public class MainController {
 //		return null;
 //	}
 	@RequestMapping("/register.do")
-	public String register( RegisterDTO dto , HttpServletRequest request) {
+	public String register( RegisterDTO dto ,Model model) {
 		System.out.println(dto);
-		request.setAttribute("dto", dto);
+		model.addAttribute("dto", dto);
 		return "register_result";
 	}
 }
