@@ -25,7 +25,17 @@
 	<input type="text" name="address">
 	<button>추가</button>
 </form>
+<div>
+	<select id="kind">
+		<option value="id">아이디</option>
+		<option value="name">이름</option>
+		<option value="address">주소</option>
+	</select>
+	<input type="text" id="search">
+	<button>검색</button>
+</div>
 <table>
+<thead>
 <tr>
 	<th>아이디</th>
 	<th>암호</th>
@@ -35,6 +45,8 @@
 	<th>주소</th>
 	<th>비고</th>
 </tr>
+</thead>
+<tbody>
 <c:forEach var="member" items="${requestScope.list }">
 	<tr>
 		<td>${member.id }</td>
@@ -47,6 +59,7 @@
 		<a href="updateView.do?id=${member.id }">수정</a></td>
 	</tr>
 </c:forEach>
+</tbody>
 </table>
 </body>
 </html>
