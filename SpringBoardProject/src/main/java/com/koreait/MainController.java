@@ -1,13 +1,18 @@
 package com.koreait;
 
+import java.util.HashSet;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.koreait.dto.BoardCommentDTO;
 import com.koreait.dto.BoardDTO;
+import com.koreait.dto.FileDTO;
 import com.koreait.service.BoardService;
 import com.koreait.service.MemberService;
 import com.koreait.vo.PaggingVO;
@@ -35,6 +40,22 @@ public class MainController {
 		model.addAttribute("pagging", vo);
 		
 		return "main";
+	}
+	
+	@RequestMapping("/boardView.do")
+	public String boardView(int bno, Model model, HttpSession session) {
+		BoardDTO dto = boardService.selectBoardDTO(bno);
+		List<FileDTO> flist = boardService.selectFileList(bno);
+		List<BoardCommentDTO> comment = boardService.selectCommentDTO(bno);
+		//게시글 조회수 증가
+		HashSet<Integer> set = (HashSet<Integer>) session.getAttribute("bno_history");
+		if(set.add(bno))
+			boardService.addBoardCount(bno);
+		
+		model.addAttribute("board", dto);
+		model.addAttribute("flist", flist);
+		model.addAttribute("comment", comment);
+		return "board_detail_view";
 	}
 	
 }
