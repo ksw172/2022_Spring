@@ -1,5 +1,8 @@
 package com.koreait.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("board")
 public class BoardDTO {
 	private int bno;
 	private String title;

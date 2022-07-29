@@ -44,7 +44,7 @@ public class PaggingVO {
 		return getNowPageGroupNo() * pageGroupOfCount;
 	}
 	//이전 페이지 그룹이 있냐?
-	public boolean isPriviousPageGroup() {
+	public boolean isPreviousPageGroup() {
 		return getNowPageGroupNo() > 1;
 	}
 	//다음 페이지 그룹이 있냐?
@@ -58,7 +58,7 @@ public class PaggingVO {
 				+ getCurrentPageNo() + ", getTotalPage()=" + getTotalPage() + ", getTotalPageGroup()="
 				+ getTotalPageGroup() + ", getNowPageGroupNo()=" + getNowPageGroupNo() + ", getStartPageOfPageGroup()="
 				+ getStartPageOfPageGroup() + ", getEndPageOfPageGroup()=" + getEndPageOfPageGroup()
-				+ ", isPriviousPageGroup()=" + isPriviousPageGroup() + ", isNextPageGroup()=" + isNextPageGroup() + "]";
+				+ ", isPreviousPageGroup()=" + isPreviousPageGroup() + ", isNextPageGroup()=" + isNextPageGroup() + "]";
 	}
 	
 	
