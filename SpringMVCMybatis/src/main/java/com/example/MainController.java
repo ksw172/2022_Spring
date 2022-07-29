@@ -109,7 +109,7 @@ public class MainController {
 			System.out.println(uploadFile.getAbsolutePath());
 			try {
 				mf.transferTo(uploadFile);
-				list.add(uploadFile.getAbsolutePath());
+				list.add(fileName);
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -126,7 +126,8 @@ public class MainController {
 	public void fileDown(String file, HttpServletResponse response) {
 		response.setHeader("Content-Disposition", "attachement;fileName="+file);
 		response.setHeader("Content-Transfer-Encoding", "binary");
-		File f = new File(file);
+		String root = "c:\\fileUpload\\";
+		File f = new File(root + file);
 		response.setContentLength((int)f.length());
 		
 		try {
