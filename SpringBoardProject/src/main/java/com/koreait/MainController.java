@@ -1,6 +1,7 @@
 package com.koreait;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.koreait.service.BoardService;
 import com.koreait.service.MemberService;
@@ -15,5 +16,17 @@ public class MainController {
 		this.memberService = memberService;
 	}
 	
+	@RequestMapping("/")
+	public String main() {
+		return "main";
+	}
 	
 }
+
+
+
+
+
+
+
+
