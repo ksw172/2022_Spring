@@ -1,6 +1,9 @@
 package com.example;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -117,6 +120,32 @@ public class MainController {
 		}
 		
 		return "file_result";
+	}
+	
+	@RequestMapping("/fileDown.do")
+	public void fileDown(String file, HttpServletResponse response) {
+		response.setHeader("Content-Disposition", "attachement;fileName="+file);
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		File f = new File(file);
+		response.setContentLength((int)f.length());
+		
+		try {
+			FileInputStream fis = new FileInputStream(f);
+			BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+			byte[] buffer = new byte[1024];
+			while(true) {
+				int size = fis.read(buffer);
+				if(size == -1) break;
+				bos.write(buffer,0,size);
+				bos.flush();
+			}
+			fis.close();
+			bos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
 
