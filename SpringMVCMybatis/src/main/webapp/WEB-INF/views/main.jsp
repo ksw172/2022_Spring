@@ -8,7 +8,31 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-
+	$(function(){
+		$("#btn_search").click(function(){
+			var d = "kind="+$("#kind").val()+"&search="+$("#search").val();
+			$.ajax({
+				url:"search.do",
+				data:d,
+				dataType:"json",
+				type:"get",
+				success:function(r){
+					var tag = "";
+					for(i=0;i<r.length;r++){
+						tag += "<tr>";
+						tag += "<td>" +r[i].id+ "</td>";
+						tag += "<td>" +r[i].passwd+ "</td>";
+						tag += "<td>" +r[i].name+ "</td>";
+						tag += "<td>" +r[i].age+ "</td>";
+						tag += "<td>" +r[i].gender+ "</td>";
+						tag += "<td>" +r[i].address+ "</td>";
+						tag += "</tr>";
+					}
+					$("tbody").html(tag);
+				}
+			});
+		});
+	});
 </script>
 </head>
 <body>
@@ -32,7 +56,7 @@
 		<option value="address">주소</option>
 	</select>
 	<input type="text" id="search">
-	<button>검색</button>
+	<button id="btn_search">검색</button>
 </div>
 <table>
 <thead>
