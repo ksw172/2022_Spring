@@ -49,15 +49,22 @@ public class MainController {
 		List<BoardCommentDTO> comment = boardService.selectCommentDTO(bno);
 		//게시글 조회수 증가
 		HashSet<Integer> set = (HashSet<Integer>) session.getAttribute("bno_history");
+		if(set == null)
+			set = new HashSet<Integer>();
+		
 		if(set.add(bno))
 			boardService.addBoardCount(bno);
-		
+		session.setAttribute("bno_history", set);
 		model.addAttribute("board", dto);
 		model.addAttribute("flist", flist);
 		model.addAttribute("comment", comment);
 		return "board_detail_view";
 	}
 	
+	@RequestMapping("loginView.do")
+	public String loginView() {
+		return "login";
+	}
 }
 
 

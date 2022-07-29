@@ -22,6 +22,9 @@
 	<select id="selectFileList" parameterType="int" resultType="file">
 		select * from board_file where bno = #{bno} 
 	</select>
+	<update id="addBoardCount" parameterType="int">
+		update board set bcount = bcount + 1 where bno = #{bno}
+	</update>
 </mapper>
 
 

@@ -2,23 +2,25 @@ package com.koreait.dto;
 
 import java.io.File;
 
+import org.apache.ibatis.type.Alias;
+@Alias("file")
 public class FileDTO {
 	private String path;
 	private String fileName;
 	private String type;
 	private int bno;
-	private int order;
-	public FileDTO(String path, String fileName, String type, int bno, int order) {
+	private int fno;
+	public FileDTO(String path, String fileName, String type, int bno, int fno) {
 		super();
 		this.path = path;
 		this.fileName = fileName;
 		this.type = type;
 		this.bno = bno;
-		this.order = order;
+		this.fno = fno;
 	}
 	public FileDTO() {
 	}
-	public FileDTO(File file, int bno, int order) {
+	public FileDTO(File file, int bno, int fno) {
 		this.path = file.getAbsolutePath();
 		this.fileName = file.getName();
 		switch(fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase()) {
@@ -32,7 +34,7 @@ public class FileDTO {
 			type="normal";
 		}
 		this.bno = bno;
-		this.order = order;
+		this.fno = fno;
 	}
 	public String getPath() {
 		return path;
@@ -70,16 +72,17 @@ public class FileDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	public int getOrder() {
-		return order;
+	
+	public int getFno() {
+		return fno;
 	}
-	public void setOrder(int order) {
-		this.order = order;
+	public void setFno(int fno) {
+		this.fno = fno;
 	}
 	@Override
 	public String toString() {
 		return "FileDTO [path=" + path + ", fileName=" + fileName + ", type=" + type + ", bno=" + bno + ", order="
-				+ order + "]";
+				+ fno + "]";
 	}
 	
 	
