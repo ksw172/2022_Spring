@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,5 +15,6 @@ public interface MemberMapper {
 	int deleteMember(String id);
 	MemberDTO selectMember(String id);
 	int updateMember(MemberDTO dto);
+	List<MemberDTO> searchMember(Map<String, Object> map);
 
 }

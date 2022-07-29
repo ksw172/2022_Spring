@@ -18,7 +18,7 @@
 				type:"get",
 				success:function(r){
 					var tag = "";
-					for(i=0;i<r.length;r++){
+					for(i=0;i<r.length;i++){
 						tag += "<tr>";
 						tag += "<td>" +r[i].id+ "</td>";
 						tag += "<td>" +r[i].passwd+ "</td>";

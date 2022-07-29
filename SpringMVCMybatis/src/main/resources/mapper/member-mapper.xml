@@ -19,7 +19,21 @@
 		update member set passwd=#{passwd},name=#{name},age=#{age},
 		gender=#{gender},address=#{address} where id = #{id}
 	</update>
+	<select id="searchMember" parameterType="map" resultType="member">
+		select * from member where
+		<choose>
+			<when test="kind.equals('id')">
+				 id = #{search}
+			</when>
+			<when test="kind.equals('name')">
+				 name like '%' || #{search} || '%'
+			</when>
+			<when test="kind.equals('address')">
+				 address like '%' || #{search} || '%'
+			</when>
+		</choose>
 	
+	</select>
 </mapper>
 
 
