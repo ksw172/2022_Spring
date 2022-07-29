@@ -11,5 +11,6 @@ public interface BoardMapper {
 
 	List<BoardDTO> selectBoardList(int pageNo);
 	int selectBoardCount();
+	BoardDTO selectBoardDTO(int bno);
 
 }
