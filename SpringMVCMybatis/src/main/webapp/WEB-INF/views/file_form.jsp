@@ -13,6 +13,7 @@
 </head>
 <body>
 	<form action="fileUpload.do" enctype="multipart/form-data" method="post">
+			<input type="text" name="writer"><br>
 			<input type="file" name="file"><br> 
 			<input type="file" name="file"><br>
 			<input type="file" name="file"><br> 

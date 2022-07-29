@@ -1,6 +1,8 @@
 package com.example;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.example.dto.MemberDTO;
 import com.example.service.MemberService;
@@ -81,6 +85,38 @@ public class MainController {
 	@RequestMapping("/file.do")
 	public String file() {
 		return "file_form";
+	}
+	
+	@RequestMapping("/fileUpload.do")
+	public String fileUpload(String writer, MultipartHttpServletRequest request) {
+		String root = "c:\\fileUpload\\";
+		File userRoot = new File(root);
+		if(!userRoot.exists())
+			userRoot.mkdirs();
+		
+		List<MultipartFile> fileList = request.getFiles("file");
+		ArrayList<String> list = new ArrayList<String>();
+		for(MultipartFile mf : fileList) {
+			String fileName = mf.getOriginalFilename();
+			System.out.println(fileName);
+			if(mf.getSize() == 0) continue;
+			
+			//실제 저장할 경로
+			File uploadFile = new File(root + "\\" + fileName);
+			System.out.println(uploadFile.getAbsolutePath());
+			try {
+				mf.transferTo(uploadFile);
+				list.add(uploadFile.getAbsolutePath());
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("writer", writer);
+			request.setAttribute("list",list);
+		}
+		
+		return "file_result";
 	}
 }
 
